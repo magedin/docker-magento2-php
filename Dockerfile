@@ -37,10 +37,6 @@ COPY bin/cronstart /usr/local/bin/
 ## Copy Configurations
 COPY conf/*.ini /usr/local/etc/php/conf.d/
 
-RUN chown -R app:app /usr/local/etc/*
-
-VOLUME /var/www
+#RUN chown -R app:app /usr/local/etc/*
 
 USER app:app
-
-WORKDIR /var/www/html
