@@ -1,6 +1,15 @@
-# Dockerized PHP for Magento 2
+<h1 align="center">Dockerized PHP for Magento 2 by MagedIn Technology</h1>
 
-![Docker Pulls](https://img.shields.io/docker/pulls/magedin/magento2-php?style=for-the-badge)
+<div align="center">
+  <h4>MagedIn's docker for running a complete Magento 2 PHP installation.</h4>
+  <img src="https://img.shields.io/badge/magento-2.x-red?style=for-the-badge"/>
+  <a href="https://hub.docker.com/r/magedin/magento2-php" target="_blank">
+    <img src="https://img.shields.io/docker/pulls/magedin/magento2-php?color=blue&style=for-the-badge"/>
+  </a>
+  <a href="https://hub.docker.com/r/magedin/magento2-php" target="_blank">
+    <img src="https://img.shields.io/docker/cloud/build/magedin/magento2-php?color=blue&style=for-the-badge"/>
+  </a>
+</div>
 
 This docker image can be used to compose a Magento 2 application. It's currently used by [Magento DockerLab](https://github.com/magedin/magento-dockerlab) project.
 
