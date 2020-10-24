@@ -2,7 +2,8 @@
 
 <div align="center">
   <h4>MagedIn's docker for running a complete Magento 2 PHP installation.</h4>
-  <img src="https://img.shields.io/badge/magento-2.x-red?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/magento-2.x-red?style=for-the-badge&logo=magento"/>
+  <img src="https://img.shields.io/badge/product-red?style=for-the-badge&logo=adobe"/>
   <a href="https://hub.docker.com/r/magedin/magento2-php" target="_blank">
     <img src="https://img.shields.io/docker/pulls/magedin/magento2-php?color=blue&style=for-the-badge"/>
   </a>
