@@ -1,4 +1,4 @@
-FROM magedin/php:5.6-fpm
+FROM magedin/php:5.5-fpm
 MAINTAINER MagedIn Technology <support@magedin.com>
 
 
