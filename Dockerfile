@@ -1,4 +1,4 @@
-FROM magedin/php:7.2-fpm-buster
+FROM magedin/php:7.0-fpm
 MAINTAINER MagedIn Technology <support@magedin.com>
 
 
