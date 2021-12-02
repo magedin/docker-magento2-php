@@ -1,4 +1,4 @@
-FROM magedin/php:7.3.30
+FROM magedin/php:7.3.31
 MAINTAINER MagedIn Technology <support@magedin.com>
 
 
