@@ -1,4 +1,4 @@
-FROM magedin/php:7.4.27.2
+FROM magedin/php:8.0.15.2
 MAINTAINER MagedIn Technology <support@magedin.com>
 
 
@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y \
 
 ## Install NodeJs
 RUN apt-get install -y gnupg \
-  && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+  && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
   && apt-get install -y nodejs \
   && mkdir ${APP_HOME}/.config ${APP_HOME}/.npm \
   && chown ${APP_USER}:${APP_GROUP} ${APP_HOME}/.config ${APP_HOME}/.npm \
