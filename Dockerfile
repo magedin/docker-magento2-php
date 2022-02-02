@@ -1,4 +1,4 @@
-FROM magedin/php:8.0.15.2
+FROM magedin/php:8.1.2.1
 MAINTAINER MagedIn Technology <support@magedin.com>
 
 
