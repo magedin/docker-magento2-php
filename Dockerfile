@@ -1,7 +1,6 @@
-FROM tiagosampaio/php:7.4.27.2
+FROM tiagosampaio/php:7.4.27
 
 ARG GOSU_VERSION=1.11
-
 
 # ENVIRONMENT VARIABLES ------------------------------------------------------------------------------------------------
 
@@ -14,8 +13,27 @@ ENV DEBUG false
 ENV UPDATE_UID_GID false
 ENV SET_DOCKER_HOST false
 
+ENV N98 /usr/local/bin/n98
+
+# ADD USER AND GROUP ---------------------------------------------------------------------------------------------------
+
+## Add user www with ID 1000. It means that the user in your local machine will be the same user in Docker container.
+RUN groupadd -g 1000 ${APP_GROUP} && useradd -g 1000 -u 1000 -d ${APP_HOME} -s /bin/bash ${APP_USER}
+
 
 # BASE INSTALLATION ----------------------------------------------------------------------------------------------------
+
+## Install Tools
+RUN apt-get update && apt-get install -y \
+  cron
+
+## Install NodeJs
+RUN apt-get install -y gnupg \
+  && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
+  && apt-get install -y nodejs \
+  && mkdir ${APP_HOME}/.config ${APP_HOME}/.npm \
+  && chown ${APP_USER}:${APP_GROUP} ${APP_HOME}/.config ${APP_HOME}/.npm \
+  && npm install -g grunt-cli
 
 ## Install Blackfire
 RUN curl -A "Docker" -o /tmp/blackfire-probe.tar.gz -D - -L -s https://blackfire.io/api/v1/releases/probe/php/linux/amd64/$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
@@ -41,11 +59,13 @@ RUN curl -sSLO https://github.com/mailhog/mhsendmail/releases/download/v0.2.0/mh
   && chmod +x mhsendmail_linux_amd64 \
   && mv mhsendmail_linux_amd64 /usr/local/bin/mhsendmail
 
+## Install n98
+RUN curl https://files.magerun.net/n98-magerun2.phar -o ${N98} \
+  && chmod +x ${N98} \
+  && chown ${APP_USER}:${APP_GROUP} ${N98}
+
 
 # BASE CONFIGURATION ---------------------------------------------------------------------------------------------------
-
-## Add user www with ID 1000. It means that the user in your local machine will be the same user in Docker container.
-RUN groupadd -g 1000 ${APP_GROUP} && useradd -g 1000 -u 1000 -d ${APP_HOME} -s /bin/bash ${APP_USER}
 
 COPY conf/conf.d/*.ini /usr/local/etc/php/conf.d/
 COPY conf/php.ini /usr/local/etc/php/php.ini
@@ -68,6 +88,10 @@ COPY ./scripts/* ${APP_HOME}/scripts
 
 RUN mkdir -p ${APP_ROOT} \
   && chown -R ${APP_USER}:${APP_GROUP} ${APP_HOME} /usr/local/etc/php/conf.d
+
+COPY conf/php-fpm/zzz-magento.conf /usr/local/etc/php-fpm.d
+
+RUN chown -R ${APP_USER}:${APP_GROUP} /usr/local/etc/*
 
 VOLUME ${APP_HOME}
 
