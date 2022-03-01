@@ -65,6 +65,16 @@ RUN curl https://files.magerun.net/n98-magerun2.phar -o ${N98} \
   && chown ${APP_USER}:${APP_GROUP} ${N98}
 
 
+# DISABLE PHP EXTENSIONS -----------------------------------------------------------------------------------------------
+
+
+## Disable SourceGuardian by default
+RUN sed -i -e 's/^zend_extension/\;zend_extension/g' ${PHP_INI_DIR}/conf.d/docker-php-ext-sourceguardian.ini
+
+## Disable BlackFire by default
+RUN sed -i -e 's/^extension/\;extension/g' ${PHP_INI_DIR}/conf.d/blackfire.ini
+
+
 # BASE CONFIGURATION ---------------------------------------------------------------------------------------------------
 
 COPY conf/conf.d/*.ini /usr/local/etc/php/conf.d/
