@@ -1,4 +1,4 @@
-FROM tiagosampaio/php:8.1.10.5
+FROM tiagosampaio/php:8.1.12.5
 
 ARG GOSU_VERSION=1.11
 
