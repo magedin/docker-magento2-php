@@ -1,6 +1,4 @@
-FROM tiagosampaio/php:8.1.12.5
-
-ARG GOSU_VERSION=1.11
+FROM tiagosampaio/php:8.1.13.6
 
 # ENVIRONMENT VARIABLES ------------------------------------------------------------------------------------------------
 
