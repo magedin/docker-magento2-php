@@ -52,6 +52,8 @@ RUN curl https://files.magerun.net/n98-magerun2.phar -o ${N98} \
   && chmod +x ${N98} \
   && chown ${APP_USER}:${APP_GROUP} ${N98}
 
+# DOWNGRADE COMPOSER 2 -------------------------------------------------------------------------------------------------
+RUN composer self-update 2.2.21
 
 # DISABLE PHP EXTENSIONS -----------------------------------------------------------------------------------------------
 
