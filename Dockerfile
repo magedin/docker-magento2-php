@@ -1,4 +1,4 @@
-FROM tiagosampaio/php:8.1.15.6
+FROM tiagosampaio/php:8.1.16.6
 
 # ENVIRONMENT VARIABLES ------------------------------------------------------------------------------------------------
 
