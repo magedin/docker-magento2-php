@@ -25,7 +25,8 @@ RUN groupadd -g 1000 ${APP_GROUP} && useradd -g 1000 -u 1000 -d ${APP_HOME} -s /
 
 ## Install Tools
 RUN apt-get update && apt-get install -y \
-  cron
+  cron \
+  default-mysql-client
 
 ## Install NodeJs
 RUN apt-get install -y gnupg \
@@ -64,6 +65,9 @@ RUN curl https://files.magerun.net/n98-magerun2.phar -o ${N98} \
   && chmod +x ${N98} \
   && chown ${APP_USER}:${APP_GROUP} ${N98}
 
+
+# DOWNGRADE COMPOSER 2 -------------------------------------------------------------------------------------------------
+RUN composer self-update 2.2.21
 
 # DISABLE PHP EXTENSIONS -----------------------------------------------------------------------------------------------
 
