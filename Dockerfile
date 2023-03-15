@@ -23,7 +23,8 @@ RUN groupadd -g 1000 ${APP_GROUP} && useradd -g 1000 -u 1000 -d ${APP_HOME} -s /
 
 ## Install Tools
 RUN apt-get update && apt-get install -y \
-  cron
+  cron \
+  default-mysql-client
 
 ## Install NodeJs
 RUN apt-get install -y gnupg \
