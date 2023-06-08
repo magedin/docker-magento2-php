@@ -1,4 +1,4 @@
-FROM tiagosampaio/php:8.1.16.6
+FROM tiagosampaio/php:8.1.19.6
 
 # ENVIRONMENT VARIABLES ------------------------------------------------------------------------------------------------
 
@@ -79,7 +79,8 @@ RUN ["chmod", "+x", "/docker-entrypoint.sh"]
 
 RUN touch ${APP_HOME}/.bashrc \
   && echo "alias ll=\"ls $LS_OPTIONS -lah\"" >> ${APP_HOME}/.bashrc \
-  && echo "alias l=\"ll\"" >> ${APP_HOME}/.bashrc
+  && echo "alias l=\"ll\"" >> ${APP_HOME}/.bashrc \
+  && echo "alias m=\"${APP_ROOT}/bin/magento\"" >> ${APP_HOME}/.bashrc
 
 RUN mkdir -p ${APP_HOME}/scripts
 COPY ./scripts/* ${APP_HOME}/scripts
